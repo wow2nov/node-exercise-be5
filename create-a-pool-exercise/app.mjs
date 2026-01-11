@@ -12,6 +12,7 @@ app.get("/movies", async (req, res) => {
 	return res.json({
 		data: result.rows,
 	});
+	
 });
 
 app.listen(port, () => {
