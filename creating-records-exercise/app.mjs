@@ -9,9 +9,14 @@ app.use(express.json());
 // 📍 **** สร้าง API เพื่อใช้ในการเพิ่มข้อมูลหนังเรื่องใหม่ไปที่ Database ตรงนี้ ****
 app.post("/movies",async (req,res) => {
 	try {
-		const newMovie = {
-			...req.body,
-		};
+		const {
+			title, 
+			description,
+			genres, 
+			year, 
+			poster, 
+			rating
+		} = req.body
 
 		await pool.query (
 
@@ -21,12 +26,12 @@ app.post("/movies",async (req,res) => {
 			`
 			,
 			[
-				newMovie.title, 
-				newMovie.description, 
-				newMovie.genres, 
-				newMovie.year, 
-				newMovie.poster, 
-				newMovie.rating
+				title, 
+				description, 
+				genres, 
+				year, 
+				poster, 
+				rating
 			]
 		);
 
@@ -35,7 +40,7 @@ app.post("/movies",async (req,res) => {
 		});
 	} catch (error) {
 		return res.status(500).json({
-			message: "error",
+			message: "error"
 		});
 	}
 });
