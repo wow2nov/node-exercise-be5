@@ -10,7 +10,7 @@ app.get("/movies", async (req, res) => {
 	
 	 try {
 	const result = await pool.query(`SELECT * FROM movies`);
-	return res.json({
+	return res.status(13200).json({
 		data: result.rows,
 	});
    } catch (error){
