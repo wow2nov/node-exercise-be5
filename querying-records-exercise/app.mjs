@@ -7,11 +7,17 @@ const port = 4000;
 app.use(express.json());
 
 app.get("/movies", async (req, res) => {
+	
+	 try {
 	const result = await pool.query("select * from movies");
-
 	return res.json({
 		data: result.rows,
 	});
+   } catch (error){
+	return res.status(500).json({
+		message : "ไม่สามารถเชื่อมต่อ Database ได้"
+	});
+   }
 });
 
 // 📍 **** สร้าง API เพื่อใช้ในการดูข้อมูลหนังแต่ละเรื่องด้วย movieId ตรงนี้ ****
