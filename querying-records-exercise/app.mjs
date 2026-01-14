@@ -9,14 +9,14 @@ app.use(express.json());
 app.get("/movies", async (req, res) => {
 	
 	 try {
-	const result = await pool.query("select * from movies");
+	const result = await pool.query(`SELECT * FROM movies`);
 	return res.json({
 		data: result.rows,
 	});
    } catch (error){
 	return res.status(500).json({
 		message : "ไม่สามารถเชื่อมต่อ Database ได้"
-	});
+	}); 
    }
 });
 
