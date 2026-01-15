@@ -31,7 +31,7 @@ app.get("/movies/:movieId", async (req, res)=>{
 
 	if(!results.rows[0]) {
 		return res.status(404).json({
-		message:"Movie not found",
+		message:`Movie not found (movie id : ${movieIdFromClient})`,
 		});
 	};
 
