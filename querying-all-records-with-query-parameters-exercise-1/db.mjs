@@ -1,9 +1,9 @@
 import * as pg from "pg";
-const { Pool } = pg.default;
+const { Pool } = pg;
 
 const pool = new Pool({
 	connectionString:
-		"postgresql://<username>:<password>@<hostname>:5432/<database_name>",
+		"postgresql://supawow:0211@localhost:5432/be5-node",
 });
 
 export { pool };
